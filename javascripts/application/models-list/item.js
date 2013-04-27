@@ -1,5 +1,5 @@
 YUI.add('item-list', function (Y) {
-    Y.ItemList = Y.Base.create('ItemList', Y.ModelList, [], {
+    Y.ItemList = Y.Base.create('itemList', Y.ModelList, [], {
         comparator: function (model) {
             return model.get('distance');
         }

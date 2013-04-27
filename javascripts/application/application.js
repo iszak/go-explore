@@ -21,12 +21,18 @@ YUI().use('app', 'index-view', 'item-model', 'item-list', 'flickr-service', func
 
         // Fetch location
         navigator.geolocation.getCurrentPosition(function(position) {
-            flickr.fetch(position.coords.latitude, position.coords.longitude);
-        }, function(error){
+            flickr.fetch(position.coords.latitude, position.coords.longitude, {
+                maximumAge: 0,
+                enableHighAccuracy: true
+            });
+        }, function(error) {
             console.log(error);
         });
 
-        this.showView('index');
+
+        this.showView('index', {
+            modelList: modelList
+        });
     });
 
 

@@ -1,4 +1,4 @@
-YUI().use('app', 'indexView', 'itemModel', function (Y) {
+YUI().use('app', 'indexView', 'itemModel', 'flickrService', function (Y) {
     var app = new Y.App({
         serverRouting: false,
 

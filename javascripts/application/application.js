@@ -1,4 +1,4 @@
-YUI().use('app', 'indexView', 'itemModel', 'flickrService', function (Y) {
+YUI().use('app', 'index-view', 'item-model', 'item-list', 'flickr-service', function (Y) {
     var app = new Y.App({
         serverRouting: false,
 
@@ -12,8 +12,16 @@ YUI().use('app', 'indexView', 'itemModel', 'flickrService', function (Y) {
 
 
     app.route('/', function (req) {
+        var modelList = new Y.ItemList();
+
+        var flickr = new Y.FlickrService({
+            modelList: modelList
+        });
+
+
+        // Fetch location
         navigator.geolocation.getCurrentPosition(function(position) {
-            console.log(position);
+            flickr.fetch(position.coords.latitude, position.coords.longitude);
         }, function(error){
             console.log(error);
         });

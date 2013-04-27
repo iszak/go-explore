@@ -1,5 +1,5 @@
-YUI.add('itemModel', function (Y) {
-   Y.ItemModel = Y.Base.create('itemModel', Y.Model, [], {
+YUI.add('item-model', function (Y) {
+   Y.ItemModel = Y.Base.create('ItemModel', Y.Model, [], {
 
    });
 }, '0.0.1', {

@@ -1,4 +1,4 @@
-YUI().use('app', 'index-view', 'item-model', 'item-list', 'flickr-service', function (Y) {
+YUI().use('app', 'index-view', 'item-model', 'item-list', 'location-service', function (Y) {
     var app = new Y.App({
         serverRouting: false,
 
@@ -14,20 +14,29 @@ YUI().use('app', 'index-view', 'item-model', 'item-list', 'flickr-service', func
     app.route('/', function (req) {
         var modelList = new Y.ItemList();
 
-        var flickr = new Y.FlickrService({
-            modelList: modelList
+        var location = new Y.LocationService({
+            modelList: modelList,
+            adapter: 'flickr'
         });
 
 
-        // Fetch location
-        navigator.geolocation.getCurrentPosition(function(position) {
-            flickr.fetch(position.coords.latitude, position.coords.longitude, {
-                maximumAge: 0,
-                enableHighAccuracy: true
+        // Poll location
+        navigator.geolocation.watchPosition(Y.bind(location.fetch, location), function(error){
+
+        }, {
+            timeout: 10000,
+            maximumAge: 0,
+            enableHighAccuracy: true
+        });
+
+
+        setTimeout(function(){
+            modelList.add({
+                id: 1,
+                latitude: -31.953004,
+                longitude: 115.857469
             });
-        }, function(error) {
-            console.log(error);
-        });
+        }, 1000);
 
 
         this.showView('index', {
@@ -36,9 +45,11 @@ YUI().use('app', 'index-view', 'item-model', 'item-list', 'flickr-service', func
     });
 
 
+
     app.route('/explore', function (req) {
         this.showView('explore');
     });
+
 
 
     app.route('/detail/:id', function (req) {
@@ -46,9 +57,11 @@ YUI().use('app', 'index-view', 'item-model', 'item-list', 'flickr-service', func
     });
 
 
+
     app.route('/map/:id', function (req) {
         this.showView('map');
     });
+
 
 
     app.render().save('/');

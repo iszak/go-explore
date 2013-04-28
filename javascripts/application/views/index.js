@@ -4,7 +4,7 @@ YUI.add('index-view', function (Y) {
 
         render: function () {
             var container = this.get('container');
-            
+
             var template = new Y.Template(),
                 html  = template.render(this.template);
 

@@ -1,4 +1,4 @@
-YUI().use('app', 'index-view', 'explore-view','item-model', 'item-list', 'location-service', function (Y) {
+YUI().use('app', 'index-view', 'explore-view', 'detail-view', 'item-model', 'item-list', 'location-service', function (Y) {
 
     var app = new Y.App({
         serverRouting: false,
@@ -28,13 +28,13 @@ YUI().use('app', 'index-view', 'explore-view','item-model', 'item-list', 'locati
 
         // Poll location
         navigator.geolocation.watchPosition(Y.bind(location.fetch, location), function(error){
-		console.log(error);
+            console.log(error);
         }, {
             timeout: 10000,
             maximumAge: 0,
             enableHighAccuracy: true
         });
-    
+
         this.showView('explore' , {modelList: modelList});
     });
 

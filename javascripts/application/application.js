@@ -1,4 +1,5 @@
-YUI().use('app', 'index-view', 'item-model', 'item-list', 'location-service', function (Y) {
+YUI().use('app', 'index-view', 'explore-view','item-model', 'item-list', 'location-service', function (Y) {
+
     var app = new Y.App({
         serverRouting: false,
 
@@ -12,6 +13,11 @@ YUI().use('app', 'index-view', 'item-model', 'item-list', 'location-service', fu
 
 
     app.route('/', function (req) {
+        this.showView('index');
+    });
+
+
+    app.route('/explore', function (req) {
         var modelList = new Y.ItemList();
 
         var location = new Y.LocationService({
@@ -28,26 +34,8 @@ YUI().use('app', 'index-view', 'item-model', 'item-list', 'location-service', fu
             maximumAge: 0,
             enableHighAccuracy: true
         });
-
-
-        // setTimeout(function(){
-            // modelList.add({
-                // id: 1,
-                // latitude: -31.953004,
-                // longitude: 115.857469
-            // });
-        // }, 1000);
-
-
-        this.showView('index', {
-            modelList: modelList
-        });
-    });
-
-
-
-    app.route('/explore', function (req) {
-        this.showView('explore');
+    
+        this.showView('explore' , {modelList: modelList});
     });
 
 

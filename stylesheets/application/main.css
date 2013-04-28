@@ -1,0 +1,56 @@
+/* 
+    Document   : main
+    Created on : Apr 27, 2013, 5:14:19 PM
+    Author     : Matthew
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+    
+}
+
+body{
+    font-family: verdana;
+    text-decoration: none !important;
+}
+
+a, u {
+    text-decoration: none;
+}
+
+.header{
+    background-color: activeborder;
+    padding: 10px;
+}
+
+.content{
+    padding: 10px;
+    margin: 40px 0 ;
+}
+
+#big-message{
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#small-message{
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+#main-button-container{
+    width: 100px;
+    margin: 0 auto;
+    background-color: burlywood;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+

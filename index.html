@@ -5,15 +5,12 @@
         <link rel="stylesheet" type="text/css" href="stylesheets/vendor/yui/base.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/vendor/yui/grid.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/vendor/yui/fonts.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/application/main.css">
 
         <title>Go Explore</title>
     </head>
-    <body>
 
-
-
-
-
+    <body class="yui3-skin-sam"> <!-- You need this skin class -->
         <script src="javascripts/vendor/yui.js"></script>
 
         <script src="javascripts/application/services/flickr.js"></script>
@@ -31,7 +28,35 @@
 
 
         <script id="index-template" type="text/template">
-			<% console.log(data) %>
+            <div class="header">
+                <div class="title">My App</div>
+            </div>
+
+            <div class="content">
+                <div id="big-message">This is a big message</div>
+                <div id="small-message">This is a small message</div>
+
+                <a href="#/explore"><div id="main-button-container">
+                    Discover
+                </div></a>
+
+            </div>
+        </script>
+        
+        <script id="explore-template" type="text/template">
+            <div class="header">
+                <div class="title">My Phone</div>
+            </div>
+
+            <div class="content">
+                <div id="big-message">This is a big message</div>
+                <div id="small-message">This is a small message</div>
+
+                <a href="#/explore"><div id="main-button-container">
+                    Discover
+                </div></a>
+
+            </div>
         </script>
     </body>
 </html>

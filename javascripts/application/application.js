@@ -22,7 +22,7 @@ YUI().use('app', 'index-view', 'item-model', 'item-list', 'location-service', fu
 
         // Poll location
         navigator.geolocation.watchPosition(Y.bind(location.fetch, location), function(error){
-
+		console.log(error);
         }, {
             timeout: 10000,
             maximumAge: 0,
@@ -30,13 +30,13 @@ YUI().use('app', 'index-view', 'item-model', 'item-list', 'location-service', fu
         });
 
 
-        setTimeout(function(){
-            modelList.add({
-                id: 1,
-                latitude: -31.953004,
-                longitude: 115.857469
-            });
-        }, 1000);
+        // setTimeout(function(){
+            // modelList.add({
+                // id: 1,
+                // latitude: -31.953004,
+                // longitude: 115.857469
+            // });
+        // }, 1000);
 
 
         this.showView('index', {

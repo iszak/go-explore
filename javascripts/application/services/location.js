@@ -47,6 +47,8 @@ YUI.add('location-service', function (Y) {
 
         var currentLatitude = this.location.latitude;
         var currentLongitude = this.location.longitude;
+        
+        model.set('distance', 343);
     };
 
 
@@ -58,6 +60,8 @@ YUI.add('location-service', function (Y) {
         };
 
         this.getAdapter().fetch(position.coords.latitude, position.coords.longitude);
+        
+        
     };
 }, '0.0.1', {
     requires: ['flickr-service']

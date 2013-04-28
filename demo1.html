@@ -1,0 +1,99 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div class="header">GoExplore!</div>
+	<div class="info" id="info">
+		<div class="info-header">
+			<h1>St Paul&rsquo;s Cathedral</h1>
+			<p>1,2 miles away from you - <a href="#">get directions</a></p>
+		</div>
+		<img src="images/1.jpg" alt="" class="">
+		<p class="description">St Paul&rsquo;s is a lasting monument to the glory of God and a symbol of the hope, resilience and strength of the city of London and the United Kingdom.</p>
+	</div>
+	<div id="scrollview-container">
+		<div class="main" id="scrollview-content">
+			<div id="container" class="container js-packery" data-packery-options='{ "itemSelector": ".item", "gutter": 10 }'>
+				<img src="images/1.jpg" alt="" class="item item1">
+				<img src="images/2.jpg" alt="" class="item item2">
+				<img src="images/3.jpg" alt="" class="item item2">
+				<img src="images/4.jpg" alt="" class="item item3">
+				<img src="images/5.jpg" alt="" class="item item3">
+				<img src="images/6.jpg" alt="" class="item item3">
+				<img src="images/7.jpg" alt="" class="item item4">
+				<img src="images/8.jpg" alt="" class="item item4">
+				<img src="images/9.jpg" alt="" class="item item4">
+				<img src="images/10.jpg" alt="" class="item item4">
+			</div>
+			<div id="container2" class="container js-packery" data-packery-options='{ "itemSelector": ".item", "gutter": 10 }'>
+				<img src="images/11.jpg" alt="" class="item item1">
+				<img src="images/12.jpg" alt="" class="item item2">
+				<img src="images/13.jpg" alt="" class="item item2">
+				<img src="images/14.jpg" alt="" class="item item3">
+				<img src="images/15.jpg" alt="" class="item item3">
+				<img src="images/1.jpg" alt="" class="item item3">
+				<img src="images/2.jpg" alt="" class="item item4">
+				<img src="images/3.jpg" alt="" class="item item4">
+				<img src="images/4.jpg" alt="" class="item item4">
+				<img src="images/5.jpg" alt="" class="item item4">
+			</div>
+			<div id="container3" class="container js-packery" data-packery-options='{ "itemSelector": ".item", "gutter": 10 }'>
+				<img src="images/10.jpg" alt="" class="item item1">
+				<img src="images/9.jpg" alt="" class="item item2">
+				<img src="images/8.jpg" alt="" class="item item2">
+				<img src="images/7.jpg" alt="" class="item item3">
+				<img src="images/6.jpg" alt="" class="item item3">
+				<img src="images/5.jpg" alt="" class="item item3">
+				<img src="images/4.jpg" alt="" class="item item4">
+				<img src="images/3.jpg" alt="" class="item item4">
+				<img src="images/2.jpg" alt="" class="item item4">
+				<img src="images/1.jpg" alt="" class="item item4">
+			</div>
+		</div>
+	</div>
+
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+	<script src="javascript/libs/packery.pkgdgo.js"></script>
+	<script>
+
+		YUI().use('scrollview', function(Y) {
+
+			var scrollView = new Y.ScrollView({
+				id: 'scrollview',
+				srcNode: '#scrollview-content',
+				width: 320
+			});
+
+			scrollView.render();
+
+			// Prevent default image drag behavior
+			// scrollView.get("contentBox").delegate("mousedown", function(e) {
+			//     e.preventDefault();
+			// }, "img");
+		});
+
+		$(function() {
+			$('.container img').on('click', function() {
+				$('.info').addClass('active');
+			});
+
+			$('.info img').on('click', function() {
+				$('.info').removeClass('active');
+			});
+		});
+	</script>
+</body>
+</html>

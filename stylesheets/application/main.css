@@ -15,33 +15,91 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 .header {
-  line-height: 50px;
-  height: 50px;
+  line-height: 40px;
+  height: 40px;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background-color: #e74c3c;
+  padding: 10px;
   color: rgba(255, 255, 255, 0.75);
   position: fixed;
-  z-index: 10;
+  z-index: 20;
   width: 100%;
   font-weight: bold;
 }
 
-.header .back {
+.header .back,
+.header .forward {
   color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
   text-decoration: none;
-  left: 20px;
+  top: 10px;
   position: absolute;
 }
 
-#scrollview-container {
-  padding-top: 60px;
+.header .back {
+  left: 40px;
+}
+
+.header .forward {
+  right: 40px;
+}
+
+
+.content {
+    background-color: black;
+    color: rgba(255, 255, 255, 0.75);
+    min-height: 100%;
+    padding-top: 70px;
+    width: 100%;
+}
+
+.content p {
+    font-size: 20px;
+}
+
+
+/* Index */
+.content.index p {
+    margin: 20px 20px 60px;
+    text-align: center;
+}
+
+/* Explore */
+.content.explore a {
+  display: block;
+}
+
+/* Detail */
+.content.detail .title {
+  font-size: 22px;
+  font-weight: normal;
+  margin: 10px 10px 20px;
+}
+
+.content.detail .distance {
+  font-size: 12px;
+  margin: 10px 10px;
+}
+
+.content.detail .photo {
+  max-width: 100%;
+}
+
+.content.detail .description {
+  margin: 20px 10px;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 
 .main {
-  width: 980px;
+  width: 320px;
   overflow: auto;
 }
 
@@ -97,72 +155,16 @@ body {
   height: 35px;
 }
 
-.info {
-  width: 100%;
-  min-height: 100%;
-  background-color: black;
-  color: rgba(255, 255, 255, 0.75);
-  left: 320px;
-}
 
-.info .info-header {
-  padding: 20px 20px 10px;
-}
 
-.info .info-header p {
-  font-size: 12px;
-  margin-top: 10px;
-}
 
-.info h1 {
-  font-size: 22px;
-}
-
-.info img {
-  max-width: 100%;
-}
-
-.info .description {
-  margin: 20px;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-a {
-    text-decoration: none;
-}
-
-.header{
-    background-color: activeborder;
-    padding: 10px;
-}
-
-.content{
-    padding: 50px;
-    /*margin: 40px 0 ;*/
-}
-
-#big-message{
-    text-align: center;
-    margin-bottom: 40px;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-#small-message{
-    text-align: center;
-    margin-bottom: 80px;
-}
-
-#main-button-container{
-    width: 100px;
-    margin: 0 auto;
+.button {
     background-color: burlywood;
-    padding: 10px;
-    text-align: center;
+    color: white;
     cursor: pointer;
     font-weight: bold;
-    color: white;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
 }
-
-

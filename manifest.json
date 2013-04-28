@@ -1,0 +1,23 @@
+{
+    "version": "0.0.1",
+    "type": "web",
+    "launch_path": "/go_explore/",
+
+    "name": "Go Explore",
+    "description": "Go explore with world with photos",
+
+    "developer": {
+        "name": "Yahoo Hackathon Europe 2013"
+    },
+
+    "permissions": {
+        "geolocation": {
+            "description": "Required for fetching images based on location"
+        },
+        "systemXHR": {
+            "description": "Required for fetching images"
+        }
+    },
+
+    "fullscreen": "true"
+}

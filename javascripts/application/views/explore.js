@@ -24,19 +24,23 @@ YUI.add('explore-view', function (Y) {
 
 
             // Render scroll view
-            var scrollView = new Y.ScrollView({
-                id: 'scrollview',
-                srcNode: '#scrollview-content',
-                width: 320
-            });
+            // var scrollView = new Y.ScrollView({
+            //     id: 'scrollview',
+            //     srcNode: '.main',
+            //     width: 320
+            // });
 
-            scrollView.render();
+            // scrollView.render();
 
 
             // Packery
-            var myPackery = new Packery(document.querySelector('#container'), {
+            var packery = new Packery(Y.one('.content').getDOMNode(), {
                 itemSelector: '.item',
                 gutter: 10
+            });
+
+            Y.all('.content img').on('load', function(){
+                packery.layout();
             });
 
             return this;

@@ -60,7 +60,9 @@ YUI().use('app', 'index-view', 'explore-view', 'detail-view', 'item-model', 'ite
         this.showView('map');
     });
 
-
-
-    app.render().save('/');
+    if (window.location.hash) {
+        app.render().save(window.location.hash.substr(1));
+    } else {
+        app.render().save('/');
+    }
 });

@@ -11,6 +11,7 @@ YUI.add('location-service', function (Y) {
 
         // Calculate distance of new models
         this.modelList = options.modelList;
+        this.modelList.after('reset', Y.bind(this.calculateAllDistances, this));
         this.modelList.after('add', Y.bind(this.calculateDistance, this));
 
         // Set adapters
@@ -39,8 +40,22 @@ YUI.add('location-service', function (Y) {
 
 
 
+    Y.LocationService.prototype.calculateAllDistances = function(event) {
+        event.models.forEach(Y.bind(function(model, index){
+            this.calculateDistance(model);
+        }, this));
+    };
+
+
     Y.LocationService.prototype.calculateDistance = function(event) {
-        var model = event.model;
+        var model;
+        if (event.model) {
+            model = event.model;
+        } else if (event.name === 'model') {
+            model = event;
+        } else {
+            throw Error('No model provided');
+        }
 
         var modelLatitude = model.get('latitude');
         var modelLongitude = model.get('longitude');

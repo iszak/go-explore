@@ -12,6 +12,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" >
         <meta name="apple-mobile-web-app-capable" content="yes">
 
+        <script>
+        function verify() {
+            var request = window.navigator.mozApps.getInstalled();
+
+            request.onerror = function(e) {
+              alert("Error calling getInstalled: " + request.error.name);
+            };
+            request.onsuccess = function(e) {
+                if (request.result.length === 0) {
+                    install();
+                }
+            };
+        };
+
+
+        function install() {
+            var request = window.navigator.mozApps.install('http://localhost/go_explore/manifest.json');
+
+            request.onerror = function () {
+                alert('Install failed, error: ' + this.error.name);
+            };
+        };
+
+        if (window.navigator.mozApps) {
+            verify();
+        }
+        </script>
+
         <title>Go Explore</title>
     <body>
 
@@ -39,15 +67,15 @@
 
         <script id="index-template" type="text/template">
             <div class="header">
-                <div class="title">GoExplore!</div>
+                <div class="title">Go Explore</div>
             </div>
 
-            <div class="content">
-                <div id="big-message">This is a big message</div>
-                <div id="small-message">This is a small message</div>
+
+            <div class="content index">
+                <p>Start discovering photos and places of interest in a new way</p>
 
                 <a href="#/explore">
-                    <div id="main-button-container">
+                    <div class="button">
                         Discover
                     </div>
                 </a>
@@ -57,12 +85,12 @@
 
         <script id="explore-template" type="text/template">
             <div class="header">
-                <div class="title">GoExplore!</div>
+                <div class="title">Go Explore</div>
             </div>
 
-            <div id="scrollview-container">
-                <div class="main" id="scrollview-content">
-                    <div id="container" class="container">
+            <div class="content explore">
+                <div class="main">
+                    <div class="container">
                         <% for(var i = 0, l = data.length; i < l; ++i) { %>
                             <a href="#/detail/<%= data[i].id %>">
                                 <img src="<%= data[i].url %>" alt="" class="item item<%= i %>">
@@ -72,33 +100,32 @@
                 </div>
             </div>
         </script>
-		
-		<script type="text/javascript">
-			function showMap () {
-		        var mapOptions = {
-		          center: new google.maps.LatLng(-34.397, 150.644),
-		          zoom: 8,
-		          mapTypeId: google.maps.MapTypeId.ROADMAP
-		        };
-		        var map = new google.maps.Map(document.getElementById("map-canvas"),
-		            mapOptions);
-			}
 
-		</script>
+        <script type="text/javascript">
+            function showMap () {
+                var mapOptions = {
+                  center: new google.maps.LatLng(-34.397, 150.644),
+                  zoom: 8,
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(document.getElementById("map-canvas"),
+                    mapOptions);
+            }
+        </script>
+
 
         <script id="detail-template" type="text/template">
             <div class="header">
                 <a class="back" href="#/explore">Back</a>
-                <div class="title">GoExplore!</div>
+                <div class="title">Go Explore</div>
             </div>
-            <div class="info" id="info">
-                <div class="info-header">
-                    <h1><%= data.title %></h1>
-                    <p>
-                        <%= data.distance.toFixed(2) %> kilometers away from you - <a href="#">get directions</a>
-                    </p>
-                </div>
-                <img src="<%= data.url %>" alt="<%= data.title %>" class="">
+
+            <div class="content detail">
+                <h1 class="title"><%= data.title %></h1>
+                <p class="distance">
+                    <%= data.distance.toFixed(2) %> kilometers away from you - <a href="#">get directions</a>
+                </p>
+                <img class="photo" src="<%= data.url %>" alt="<%= data.title %>">
                 <p class="description">
                     <% if (data.description === undefined) { %>
                         No descriptions

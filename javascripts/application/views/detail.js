@@ -6,7 +6,7 @@ YUI.add('detail-view', function (Y) {
             var container = this.get('container');
 
             var template = new Y.Template(),
-                html  = template.render(this.template);
+                html  = template.render(this.template, this.get('model').toJSON());
 
             container.setHTML(html);
 

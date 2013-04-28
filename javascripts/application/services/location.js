@@ -48,9 +48,25 @@ YUI.add('location-service', function (Y) {
         var currentLatitude = this.location.latitude;
         var currentLongitude = this.location.longitude;
 
-        model.set('distance', 343);
+
+        var radius = 6371; // Earth's radius in kilometers
+        var latitude = this.deg2rad(modelLatitude - currentLatitude);
+        var longitude = this.deg2rad(modelLongitude - currentLongitude);
+        var a =
+            Math.sin(latitude / 2) * Math.sin(latitude / 2) +
+            Math.cos(this.deg2rad(currentLatitude)) * Math.cos(this.deg2rad(modelLatitude)) *
+            Math.sin(longitude / 2) * Math.sin(longitude / 2)
+        ;
+        var angle = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var distance = radius * angle;
+
+        model.set('distance', distance);
     };
 
+
+    Y.LocationService.prototype.deg2rad = function(deg) {
+        return deg * (Math.PI / 180);
+    };
 
 
     Y.LocationService.prototype.fetch = function(position) {
@@ -59,7 +75,9 @@ YUI.add('location-service', function (Y) {
             longitude: position.coords.longitude
         };
 
-        this.getAdapter().fetch(position.coords.latitude, position.coords.longitude);
+        this.getAdapter().fetch(position.coords.latitude, position.coords.longitude).then(function(modelList){
+
+        });
     };
 }, '0.0.1', {
     requires: ['flickr-service']

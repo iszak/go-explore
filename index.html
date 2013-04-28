@@ -3,7 +3,6 @@
     <head>
         <link rel="stylesheet" type="text/css" href="stylesheets/vendor/yui/reset.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/vendor/yui/base.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/vendor/yui/fonts.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/application/main.css">
 
         <meta charset="utf-8">
@@ -12,8 +11,6 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" >
         <meta name="apple-mobile-web-app-capable" content="yes">
-
-        <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
         <title>Go Explore</title>
     <body>
@@ -62,41 +59,12 @@
 
             <div id="scrollview-container">
                 <div class="main" id="scrollview-content">
-                    <div id="container" class="container js-packery" data-packery-options='{ "itemSelector": ".item", "gutter": 10 }'>
-                        <img src="images/1.jpg" alt="" class="item item1">
-                        <img src="images/2.jpg" alt="" class="item item2">
-                        <img src="images/3.jpg" alt="" class="item item2">
-                        <img src="images/4.jpg" alt="" class="item item3">
-                        <img src="images/5.jpg" alt="" class="item item3">
-                        <img src="images/6.jpg" alt="" class="item item3">
-                        <img src="images/7.jpg" alt="" class="item item4">
-                        <img src="images/8.jpg" alt="" class="item item4">
-                        <img src="images/9.jpg" alt="" class="item item4">
-                        <img src="images/10.jpg" alt="" class="item item4">
-                    </div>
-                    <div id="container2" class="container js-packery" data-packery-options='{ "itemSelector": ".item", "gutter": 10 }'>
-                        <img src="images/11.jpg" alt="" class="item item1">
-                        <img src="images/12.jpg" alt="" class="item item2">
-                        <img src="images/13.jpg" alt="" class="item item2">
-                        <img src="images/14.jpg" alt="" class="item item3">
-                        <img src="images/15.jpg" alt="" class="item item3">
-                        <img src="images/1.jpg" alt="" class="item item3">
-                        <img src="images/2.jpg" alt="" class="item item4">
-                        <img src="images/3.jpg" alt="" class="item item4">
-                        <img src="images/4.jpg" alt="" class="item item4">
-                        <img src="images/5.jpg" alt="" class="item item4">
-                    </div>
-                    <div id="container3" class="container js-packery" data-packery-options='{ "itemSelector": ".item", "gutter": 10 }'>
-                        <img src="images/10.jpg" alt="" class="item item1">
-                        <img src="images/9.jpg" alt="" class="item item2">
-                        <img src="images/8.jpg" alt="" class="item item2">
-                        <img src="images/7.jpg" alt="" class="item item3">
-                        <img src="images/6.jpg" alt="" class="item item3">
-                        <img src="images/5.jpg" alt="" class="item item3">
-                        <img src="images/4.jpg" alt="" class="item item4">
-                        <img src="images/3.jpg" alt="" class="item item4">
-                        <img src="images/2.jpg" alt="" class="item item4">
-                        <img src="images/1.jpg" alt="" class="item item4">
+                    <div id="container" class="container">
+                        <% for(var i = 0, l = data.length; i < l; ++i) { %>
+                            <a href="#/detail/<%= data[i].id %>">
+                                <img src="<%= data[i].url %>" alt="" class="item item<%= i %>">
+                            </a>
+                        <% } %>
                     </div>
                 </div>
             </div>
@@ -104,14 +72,25 @@
 
 
         <script id="detail-template" type="text/template">
-            <div class="header">GoExplore!</div>
+            <div class="header">
+                <a class="back" href="#/explore">Back</a>
+                <div class="title">GoExplore!</div>
+            </div>
             <div class="info" id="info">
                 <div class="info-header">
-                    <h1>St Paul&rsquo;s Cathedral</h1>
-                    <p>1,2 miles away from you - <a href="#">get directions</a></p>
+                    <h1><%= data.title %></h1>
+                    <p>
+                        <%= data.distance.toFixed(2) %> kilometers away from you - <a href="#">get directions</a>
+                    </p>
                 </div>
-                <img src="images/1.jpg" alt="" class="">
-                <p class="description">St Paul&rsquo;s is a lasting monument to the glory of God and a symbol of the hope, resilience and strength of the city of London and the United Kingdom.</p>
+                <img src="<%= data.url %>" alt="<%= data.title %>" class="">
+                <p class="description">
+                    <% if (data.description === undefined) { %>
+                        No descriptions
+                    <% } else { %>
+                        <%= data.description %>
+                    <% } %>
+                </p>
             </div>
         </script>
     </body>

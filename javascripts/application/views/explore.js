@@ -7,7 +7,6 @@ YUI.add('explore-view', function (Y) {
 
             list.after(['add', 'remove', 'reset'], this.render, this);
             list.after('*:change', this.render, this);
-            console.log(this);
         },
 
 
@@ -36,16 +35,6 @@ YUI.add('explore-view', function (Y) {
 
             // Packery
             var myPackery = new Packery(document.querySelector('#container'), {
-                itemSelector: '.item',
-                gutter: 10
-            });
-
-            var myPackery = new Packery(document.querySelector('#container2'), {
-                itemSelector: '.item',
-                gutter: 10
-            });
-
-            var myPackery = new Packery(document.querySelector('#container3'), {
                 itemSelector: '.item',
                 gutter: 10
             });

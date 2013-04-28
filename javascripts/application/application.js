@@ -1,4 +1,6 @@
 YUI().use('app', 'index-view', 'explore-view', 'detail-view', 'item-model', 'item-list', 'location-service', function (Y) {
+    var modelList = new Y.ItemList();
+
 
     var app = new Y.App({
         serverRouting: false,
@@ -18,8 +20,6 @@ YUI().use('app', 'index-view', 'explore-view', 'detail-view', 'item-model', 'ite
 
 
     app.route('/explore', function (req) {
-        var modelList = new Y.ItemList();
-
         var location = new Y.LocationService({
             modelList: modelList,
             adapter: 'flickr'
@@ -35,13 +35,23 @@ YUI().use('app', 'index-view', 'explore-view', 'detail-view', 'item-model', 'ite
             enableHighAccuracy: true
         });
 
-        this.showView('explore' , {modelList: modelList});
+        this.showView('explore' , {
+            modelList: modelList
+        });
     });
 
 
 
     app.route('/detail/:id', function (req) {
-        this.showView('detail');
+        var model = modelList.getById(req.params.id);
+
+        if (model === undefined) {
+            // TODO:
+        } else {
+            this.showView('detail', {
+                model: model
+            });
+        }
     });
 
 

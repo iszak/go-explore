@@ -6,9 +6,12 @@
         Purpose of the stylesheet follows.
 */
 
-
+html,
 body {
   background-color: #000;
+}
+
+body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -23,6 +26,13 @@ body {
   z-index: 10;
   width: 100%;
   font-weight: bold;
+}
+
+.header .back {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  left: 20px;
+  position: absolute;
 }
 
 #scrollview-container {
@@ -57,22 +67,32 @@ body {
   height: 220px;
 }
 
-.item2 {
+.item2,
+.item3 {
   width: 155px;
   height: 100px;
 }
 
-.item3 {
+.item4,
+.item5
+.item6 {
   width: 100px;
   height: 60px;
 }
 
-.item4 {
+.item7,
+.item80
+.item9,
+.item10 {
   width: 72.5px;
   height: 50px;
 }
 
-.item5 {
+.item11,
+.item12,
+.item13,
+.item14,
+.item15 {
   width: 17%;
   height: 35px;
 }
@@ -86,7 +106,7 @@ body {
 }
 
 .info .info-header {
-  margin: 20px 20px 10px;
+  padding: 20px 20px 10px;
 }
 
 .info .info-header p {
@@ -108,12 +128,7 @@ body {
   line-height: 1.5;
 }
 
-body{
-    font-family: verdana;
-    text-decoration: none !important;
-}
-
-a, u {
+a {
     text-decoration: none;
 }
 

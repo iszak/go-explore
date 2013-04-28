@@ -19,6 +19,7 @@
 
         <script src="javascripts/vendor/packery.js"></script>
         <script src="javascripts/vendor/yui.js"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
         <script src="javascripts/application/services/flickr.js"></script>
         <script src="javascripts/application/services/location.js"></script>
@@ -69,7 +70,19 @@
                 </div>
             </div>
         </script>
+		
+		<script type="text/javascript">
+			function showMap () {
+		        var mapOptions = {
+		          center: new google.maps.LatLng(-34.397, 150.644),
+		          zoom: 8,
+		          mapTypeId: google.maps.MapTypeId.ROADMAP
+		        };
+		        var map = new google.maps.Map(document.getElementById("map-canvas"),
+		            mapOptions);
+			}
 
+		</script>
 
         <script id="detail-template" type="text/template">
             <div class="header">
@@ -92,6 +105,7 @@
                     <% } %>
                 </p>
             </div>
+            <div id="map-canvas"/>
         </script>
     </body>
 </html>
